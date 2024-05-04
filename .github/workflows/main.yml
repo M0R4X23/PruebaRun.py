@@ -3,7 +3,7 @@ name: Publicar en GitHub Pages
 on:
   push:
     branches:
-      - master  # o el nombre de tu rama principal
+      - main  # o el nombre de tu rama principal
 
 jobs:
   deploy:
