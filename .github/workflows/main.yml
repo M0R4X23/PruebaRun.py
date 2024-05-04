@@ -36,5 +36,5 @@ jobs:
     - name: Desplegar en GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: ${{ secrets.TOKEN }}
-        publish_dir: $TOKEN
+        github_token: ${{ secrets.TOKEN_ }}
+        publish_dir: $TOKEN_
