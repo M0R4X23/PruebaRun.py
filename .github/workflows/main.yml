@@ -30,7 +30,7 @@ jobs:
 
     # Copia los archivos estáticos necesarios al directorio de despliegue
     - name: Copiar archivos estáticos
-      run: cp -r templates/* $GITHUB_WORKSPACE
+      run: cp -r templates/index.html $GITHUB_WORKSPACE
 
     # Utiliza la acción para desplegar en GitHub Pages
     - name: Desplegar en GitHub Pages
