@@ -1,0 +1,43 @@
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # o el nombre de tu rama principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del código
+      uses: actions/checkout@v2
+
+    - name: Configurar Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12.2'
+
+    - name: Instalar dependencias
+      run: |
+        python -m pip install --upgrade pip
+        pip install Flask
+
+    # Ejecuta tu archivo main.py en segundo plano
+    - name: Ejecutar main.py
+      run: python main.py &
+      
+    # Espera unos segundos para que el servidor Flask inicie
+    - name: Esperar inicio del servidor
+      run: sleep 10
+      
+    # Utiliza curl para acceder a la página index.html
+    - name: Visualizar index.html
+      run: curl http://localhost:5000/templates/index.html
+
+    # Utiliza la acción para desplegar en GitHub Pages
+    - name: Desplegar en GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.TOKEN }}
+        publish_dir: $GITHUB_WORKSPACE
