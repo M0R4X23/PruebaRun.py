@@ -30,11 +30,11 @@ jobs:
 
     # Copia los archivos estáticos necesarios al directorio de despliegue
     - name: Copiar archivos estáticos
-      run: cp -r templates/index.html $GITHUB_WORKSPACE
+      run: cp -r templates/* $GITHUB_WORKSPACE
 
     # Utiliza la acción para desplegar en GitHub Pages
     - name: Desplegar en GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.TOKEN_ }}
-        publish_dir: $TOKEN_
+        publish_dir: $$GITHUB_WORKSPACE
